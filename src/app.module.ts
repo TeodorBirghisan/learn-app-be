@@ -4,16 +4,10 @@ import { AppService } from './app.service';
 import { CandidateModule } from './modules/candidate/candidate.module';
 import { ConsulationModule } from './modules/consultation/consultation.module';
 import { LocationModule } from './modules/location/location.module';
-import { TutorModule } from './modules/tutor/tutor.module';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
-  imports: [
-    TutorModule,
-    CandidateModule,
-    LocationModule,
-    TutorModule,
-    ConsulationModule,
-  ],
+  imports: [CandidateModule, LocationModule, UserModule, ConsulationModule],
   controllers: [AppController],
   providers: [AppService],
 })

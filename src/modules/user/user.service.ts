@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class TutorService {
+export class UserService {
   async sanityCheck(): Promise<string> {
-    return 'Hello Tutor';
+    return 'Hello User';
   }
 }
