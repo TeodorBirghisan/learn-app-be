@@ -26,6 +26,10 @@
 
 CHANGE4IMPACT -> HACKATHON 2022 💻
 
+## Test endpoints
+
+Go to --- /api ---
+
 ## Installation
 
 ```bash
