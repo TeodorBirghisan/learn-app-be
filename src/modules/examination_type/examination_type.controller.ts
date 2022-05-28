@@ -1,12 +1,43 @@
-import { Controller, Get } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+  Post,
+} from '@nestjs/common';
+import { ExaminationType } from './examination_type.entity';
 import { ExaminationTypeService } from './examination_type.service';
 
 @Controller('/examination-type')
 export class ExaminationTypeController {
-  constructor(private examinatinoTypeService: ExaminationTypeService) {}
+  constructor(private examinationTypeService: ExaminationTypeService) {}
+
+  @Get('/sanity-check')
+  sanityCheck() {
+    return this.examinationTypeService.sanityCheck();
+  }
 
   @Get()
-  getAll() {
-    return this.examinatinoTypeService.sanityCheck();
+  getAllExaminationType(): Promise<ExaminationType[]> {
+    return this.examinationTypeService.getAllActive();
+  }
+
+  @Post()
+  createExaminationType(@Body('name') name: string): Promise<ExaminationType> {
+    return this.examinationTypeService.saveOne(name);
+  }
+
+  @Delete('/:examinationTypeId')
+  deleteExaminationType(
+    @Param(
+      'examinationTypeId',
+      new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
+    )
+    examinationTypeId: number,
+  ): Promise<number> {
+    return this.examinationTypeService.updateIsDeleted(examinationTypeId);
   }
 }

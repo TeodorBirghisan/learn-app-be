@@ -9,6 +9,9 @@ export class ExaminationType {
   @Column()
   name: string;
 
+  @Column()
+  isDeleted: boolean;
+
   @OneToMany(() => Consultation, (consultation) => consultation.examinationType)
   consultations: Consultation[];
 }
