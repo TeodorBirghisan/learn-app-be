@@ -32,4 +32,6 @@ export class CandidateController {
       tutorId,
     );
   }
+
+  //TODO: Delete candidate
 }

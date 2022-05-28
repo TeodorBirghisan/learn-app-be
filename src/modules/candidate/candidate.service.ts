@@ -27,6 +27,7 @@ export class CandidateService {
       where: {
         isDeleted: false,
       },
+      relations: ['assignedPsychologist', 'assignedTutor'],
     });
   }
 
@@ -121,8 +122,6 @@ export class CandidateService {
       assignedTutor: tutor,
       isDeleted: false,
     });
-
-    console.log(newCandidate);
 
     return await this.candidateRepository.save(newCandidate);
   }
