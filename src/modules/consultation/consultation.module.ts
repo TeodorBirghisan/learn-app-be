@@ -1,3 +1,4 @@
+import { ConsultationResultModule } from './../consultation_result/consultation_result.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 import { ConsultationController } from './consultation.controller';
@@ -13,6 +14,7 @@ import { ExaminationTypeModule } from '../examination_type/examinatino_type.modu
     CandidateModule,
     UserModule,
     ExaminationTypeModule,
+    ConsultationResultModule,
   ],
   providers: [ConsultationService],
   controllers: [ConsultationController],

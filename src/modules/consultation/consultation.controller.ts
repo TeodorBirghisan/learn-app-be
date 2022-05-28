@@ -10,6 +10,8 @@ import {
 } from '@nestjs/common';
 import { Consultation } from './consultation.entity';
 import { ConsultationService } from './consultation.service';
+import { CreateConsultationResultDto } from '../consultation_result/consultation_result.dto';
+import { ConsultationResult } from '../consultation_result/consultation_result.entity';
 
 @Controller('/consultation')
 export class ConsultationController {
@@ -48,6 +50,19 @@ export class ConsultationController {
       candidateId,
       organizerId,
       examinationTypeId,
+    );
+  }
+
+  @Post('/result')
+  createRegistrationResult(
+    @Body('result')
+    result: CreateConsultationResultDto,
+    @Body('consultationId')
+    consultationId: number,
+  ): Promise<Consultation> {
+    return this.consultationService.saveConsultationResult(
+      result,
+      consultationId,
     );
   }
 }

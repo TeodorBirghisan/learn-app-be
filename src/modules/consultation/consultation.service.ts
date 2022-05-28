@@ -1,3 +1,5 @@
+import { CreateConsultationResultDto } from './../consultation_result/consultation_result.dto';
+import { ConsultationResult } from './../consultation_result/consultation_result.entity';
 import { CreateConsultationDto } from './consultaton.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
@@ -9,6 +11,7 @@ import { CandidateService } from '../candidate/candidate.service';
 import { UserService } from '../user/user.service';
 import { ExaminationType } from '../examination_type/examination_type.entity';
 import { ExaminationTypeService } from '../examination_type/examination_type.service';
+import { ConsultationResultService } from '../consultation_result/consultation_result.service';
 
 @Injectable()
 export class ConsultationService {
@@ -18,6 +21,7 @@ export class ConsultationService {
     private userService: UserService,
     private candidateService: CandidateService,
     private examinationTypeService: ExaminationTypeService,
+    private consultationResultService: ConsultationResultService,
   ) {}
 
   async sanityCheck(): Promise<string> {
@@ -37,7 +41,12 @@ export class ConsultationService {
       where: {
         isDeleted: false,
       },
-      relations: ['organizer', 'consultedCandidate', 'examinationType'],
+      relations: [
+        'organizer',
+        'consultedCandidate',
+        'examinationType',
+        'consultationResult',
+      ],
     });
   }
 
@@ -121,5 +130,19 @@ export class ConsultationService {
     });
 
     return await this.consultationRepository.save(newConsultation);
+  }
+
+  async saveConsultationResult(
+    result: CreateConsultationResultDto,
+    consultationId: number,
+  ): Promise<Consultation> {
+    const consultationResult: ConsultationResult =
+      await this.consultationResultService.saveOne(result);
+
+    const consultation: Consultation = await this.findOneById(consultationId);
+
+    consultation.consultationResult = consultationResult;
+
+    return await this.consultationRepository.save(consultation);
   }
 }
