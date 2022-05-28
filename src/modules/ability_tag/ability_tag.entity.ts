@@ -1,6 +1,11 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Candidate } from '../candidate/candidate.entity';
-
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { CandidateAbility } from '../candidate-ability/candidate-ability.entity';
 @Entity()
 export class AbilityTag {
   @PrimaryGeneratedColumn()
@@ -8,4 +13,10 @@ export class AbilityTag {
 
   @Column()
   name: string;
+
+  @OneToMany(
+    () => CandidateAbility,
+    (candidateAbility) => candidateAbility.abilityTag,
+  )
+  candidateAbilities: CandidateAbility[];
 }

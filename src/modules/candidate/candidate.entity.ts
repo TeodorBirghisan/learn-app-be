@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { AbilityTag } from '../ability_tag/ability_tag.entity';
+import { CandidateAbility } from '../candidate-ability/candidate-ability.entity';
 import { Location } from '../location/location.entity';
 
 @Entity()
@@ -24,11 +25,15 @@ export class Candidate {
   birthDate: Date;
 
   @Column()
-  extra_notes: string;
+  extraNotes: string;
 
   @OneToOne(() => Location)
   @JoinColumn()
   location: Location;
 
-  //TODO: Add AbilityTags
+  @OneToMany(
+    () => CandidateAbility,
+    (candidateAbility) => candidateAbility.candidate,
+  )
+  candidateAbilities: CandidateAbility[];
 }
