@@ -5,11 +5,13 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private userService: UserService) {}
 
-  @Get()
-  getAll() {
+  @Get('sanity-check')
+  sanityCheck() {
     return this.userService.sanityCheck();
   }
 
-  //TODO: Get all tutors
-  //TODO: profile
+  @Get('/tutors')
+  getAllTutors() {
+    return this.userService.getAll();
+  }
 }
