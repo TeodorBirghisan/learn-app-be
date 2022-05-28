@@ -2,8 +2,7 @@ import { IsEmail, IsNotEmpty } from 'class-validator';
 import { User } from './user.entity';
 
 export class CreateUserDto {
-  firstName: string;
-  lastName: string;
+  name: string;
   @IsNotEmpty() password: string;
   @IsNotEmpty() @IsEmail() email: string;
 }
