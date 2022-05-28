@@ -26,8 +26,11 @@ export class Candidate {
   @Column()
   birthDate: Date;
 
-  @Column()
+  @Column({ nullable: true })
   extraNotes: string;
+
+  @Column()
+  isDeleted: boolean;
 
   @OneToOne(() => Location)
   @JoinColumn()

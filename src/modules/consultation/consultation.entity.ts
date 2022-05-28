@@ -22,6 +22,9 @@ export class Consultation {
   @Column()
   duration: string;
 
+  @Column()
+  isDeleted: boolean;
+
   @OneToOne(() => ConsultationResult)
   @JoinColumn()
   consultationResult: ConsultationResult;
