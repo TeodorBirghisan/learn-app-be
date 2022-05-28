@@ -7,7 +7,6 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { AbilityTag } from '../ability_tag/ability_tag.entity';
 import { CandidateAbility } from '../candidate-ability/candidate-ability.entity';
 import { Location } from '../location/location.entity';
 import { User } from '../user/user.entity';
