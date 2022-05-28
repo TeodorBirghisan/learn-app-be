@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { ConsultationResult } from '../consultation_result/consultation_result.entity';
 import { User } from '../user/user.entity';
+import { ExaminationType } from '../examination_type/examination_type.entity';
 
 @Entity()
 export class Consultation {
@@ -30,4 +31,10 @@ export class Consultation {
 
   @ManyToOne(() => User, (user) => user.consultations)
   organizer: User;
+
+  @ManyToOne(
+    () => ExaminationType,
+    (examinationType) => examinationType.consultations,
+  )
+  examinationType: ExaminationType;
 }
