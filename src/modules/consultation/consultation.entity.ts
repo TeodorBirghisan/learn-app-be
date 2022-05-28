@@ -1,4 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Candidate } from './../candidate/candidate.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { ConsultationResult } from '../consultation_result/consultation_result.entity';
+import { User } from '../user/user.entity';
 
 @Entity()
 export class Consultation {
@@ -11,6 +21,13 @@ export class Consultation {
   @Column()
   duration: string;
 
-  //TODO: Add ConsultationResult
-  //TODO: Add Candidate
+  @OneToOne(() => ConsultationResult)
+  @JoinColumn()
+  consultationResult: ConsultationResult;
+
+  @ManyToOne(() => Candidate, (candidate) => candidate.consultations)
+  consultedCandidate: Candidate;
+
+  @ManyToOne(() => User, (user) => user.consultations)
+  organizer: User;
 }

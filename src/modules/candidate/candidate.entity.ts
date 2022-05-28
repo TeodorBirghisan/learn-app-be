@@ -1,3 +1,4 @@
+import { Consultation } from './../consultation/consultation.entity';
 import {
   Column,
   Entity,
@@ -45,4 +46,10 @@ export class Candidate {
     (candidateAbility) => candidateAbility.candidate,
   )
   candidateAbilities: CandidateAbility[];
+
+  @OneToMany(
+    () => Consultation,
+    (consultation) => consultation.consultedCandidate,
+  )
+  consultations: Consultation[];
 }
