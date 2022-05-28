@@ -9,6 +9,7 @@ import { ConsulationModule } from './modules/consultation/consultation.module';
 import { LocationModule } from './modules/location/location.module';
 import { UserModule } from './modules/user/user.module';
 import { ExaminationTypeModule } from './modules/examination_type/examinatino_type.module';
+import { ConsultationResultModule } from './modules/consultation_result/consultation_result.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ExaminationTypeModule } from './modules/examination_type/examinatino_ty
     ConsulationModule,
     ExaminationTypeModule,
     AbilityTagModule,
+    ConsultationResultModule,
     DatabaseModule,
     AuthModule,
   ],
