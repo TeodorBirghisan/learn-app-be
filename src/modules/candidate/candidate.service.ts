@@ -27,7 +27,7 @@ export class CandidateService {
       where: {
         isDeleted: false,
       },
-      relations: ['assignedPsychologist', 'assignedTutor'],
+      relations: ['assignedPsychologist', 'assignedTutor', 'location'],
     });
   }
 
