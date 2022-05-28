@@ -17,7 +17,7 @@ export class Location {
   @Column()
   street: string;
 
-  @Column({ nullable: true })
+  @Column()
   number: string;
 
   @Column({ nullable: true })

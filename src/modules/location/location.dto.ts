@@ -5,6 +5,6 @@ export class CreateLocationDto {
   @IsNotEmpty() county: string;
   @IsNotEmpty() city: string;
   @IsNotEmpty() street: string;
-  number: string;
+  @IsNotEmpty() number: string;
   apartment: string;
 }
