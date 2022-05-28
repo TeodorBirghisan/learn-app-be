@@ -30,9 +30,9 @@ export class ExaminationTypeController {
     return this.examinationTypeService.saveOne(name);
   }
 
-  @Delete('/:examinationTypeId')
+  @Delete()
   deleteExaminationType(
-    @Param(
+    @Body(
       'examinationTypeId',
       new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
     )
