@@ -9,6 +9,7 @@ import {
 import { AbilityTag } from '../ability_tag/ability_tag.entity';
 import { CandidateAbility } from '../candidate-ability/candidate-ability.entity';
 import { Location } from '../location/location.entity';
+import { User } from '../user/user.entity';
 
 @Entity()
 export class Candidate {
@@ -30,6 +31,14 @@ export class Candidate {
   @OneToOne(() => Location)
   @JoinColumn()
   location: Location;
+
+  @OneToOne(() => User)
+  @JoinColumn()
+  assignedPsychologist: User;
+
+  @OneToOne(() => User)
+  @JoinColumn()
+  assignedTutor: User;
 
   @OneToMany(
     () => CandidateAbility,
