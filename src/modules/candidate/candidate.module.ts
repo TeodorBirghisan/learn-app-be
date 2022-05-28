@@ -3,7 +3,6 @@ import { CandidateService } from './candidate.service';
 import { CandidateController } from './candidate.controller';
 import { Module } from '@nestjs/common';
 import { Candidate } from './candidate.entity';
-import { User } from '../user/user.entity';
 import { UserModule } from '../user/user.module';
 import { LocationModule } from '../location/location.module';
 

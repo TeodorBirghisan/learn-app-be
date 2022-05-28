@@ -4,7 +4,6 @@ import {
   Delete,
   Get,
   HttpStatus,
-  Param,
   ParseIntPipe,
   Post,
 } from '@nestjs/common';

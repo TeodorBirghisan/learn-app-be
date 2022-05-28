@@ -1,4 +1,3 @@
-import { CreateCandidateDto } from './../candidate/candidate.dto';
 import { CreateConsultationDto } from './consultaton.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
