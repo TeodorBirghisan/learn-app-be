@@ -1,3 +1,4 @@
+import { Candidate } from './../candidate/candidate.entity';
 import { Consultation } from './../consultation/consultation.entity';
 import {
   BeforeInsert,
@@ -30,4 +31,7 @@ export class User {
 
   @OneToMany(() => Consultation, (consultation) => consultation.organizer)
   consultations: Consultation[];
+
+  @OneToMany(() => Candidate, (candidate) => candidate)
+  candidates: Candidate[];
 }
