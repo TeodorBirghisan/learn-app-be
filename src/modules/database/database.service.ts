@@ -47,8 +47,6 @@ class ConfigService {
     };
   }
 }
-//"migrate-win": "(del ormconfig.json || :) && npm run typeorm migration:run",
-//"pretypeorm": "ts-node -r tsconfig-paths/register src/scripts/typeorm-config.ts",
 
 const configService = new ConfigService(process.env).ensureValues([
   'POSTGRES_HOST',
