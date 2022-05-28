@@ -1,3 +1,4 @@
+import { Candidate } from './../candidate/candidate.entity';
 import { UserController } from './user.controller';
 import { Module } from '@nestjs/common';
 import { UserService } from './user.service';

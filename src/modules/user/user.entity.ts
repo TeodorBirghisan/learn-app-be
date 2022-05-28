@@ -1,4 +1,12 @@
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Candidate } from './../candidate/candidate.entity';
+import { Consultation } from './../consultation/consultation.entity';
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToMany,
+} from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
 @Entity()
@@ -20,4 +28,10 @@ export class User {
 
   @Column({ nullable: true })
   role: string;
+
+  @OneToMany(() => Consultation, (consultation) => consultation.organizer)
+  consultations: Consultation[];
+
+  @OneToMany(() => Candidate, (candidate) => candidate)
+  candidates: Candidate[];
 }
