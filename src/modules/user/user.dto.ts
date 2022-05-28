@@ -10,6 +10,7 @@ export class CreateUserDto {
 export class UserDto {
   @IsNotEmpty() id: number;
   @IsNotEmpty() @IsEmail() email: string;
+  @IsNotEmpty() name: string;
 }
 
 export class LoginUserDto {
@@ -18,7 +19,7 @@ export class LoginUserDto {
 }
 
 export const toUserDto = (data: User): UserDto => {
-  const { id, email } = data;
-  const userDto: UserDto = { id, email };
+  const { id, email, name } = data;
+  const userDto: UserDto = { id, email, name };
   return userDto;
 };

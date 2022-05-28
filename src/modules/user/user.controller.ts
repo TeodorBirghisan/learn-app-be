@@ -9,4 +9,7 @@ export class UserController {
   getAll() {
     return this.userService.sanityCheck();
   }
+
+  //TODO: Get all tutors
+  //TODO: profile
 }
